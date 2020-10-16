@@ -4,7 +4,7 @@
 You can use seceral lines"""
 
 __appname__ = 'boilerplate'
-__author__ = 'Rui'
+__author__ = 'Rui Zhang (rui.zhang20@imperial.ac.uk)'
 __version__ = '0.0.1'
 __license__ = "License for this code/program"
 

@@ -1,6 +1,6 @@
-My First Week Code Practice
+# My First Week Code Practice Readme
 
-#Project name: Unix, Shell and LaTeX Practice
+## Project name: Unix, Shell and LaTeX Practice
 
 #Brief description:
 
@@ -15,8 +15,8 @@ CompileLaTeX.sh
 compile the text file into a pdf file and open the pdf file
 usage:
 bash CompileLaTeX.sh filename  
-#remember do not type the text file suffix .tex
-#please install latex before use this shell script
+#remember to type the text file suffix .tex
+#please install LaTeX before use this shell script
 #if you are a mac user, please install evince before using this shell script, otherwise you could not use evince command
 
 ConcatenateTwoFiles.sh

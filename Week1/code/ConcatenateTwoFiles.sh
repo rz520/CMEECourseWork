@@ -19,7 +19,10 @@ then
           cat $3
       else
           echo "You should give the output file name"
+      fi
     else
         echo "There is no second input file"
+    fi
 else
   echo "You should give 2 input files and the output file name"
+fi 

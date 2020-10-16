@@ -9,6 +9,20 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 # lists containing the latin names, common names and mean body masses for
 # each species in birds, respectively. 
 
+latin_name = [row[0] for row in birds]
+common_name = [row[1] for row in birds]
+mean_body_masses = [row[2] for row in birds]
+
 # (2) Now do the same using conventional loops (you can choose to do this 
 # before 1 !). 
+latin_name = []
+for row in birds:
+    latin_name.append(row[0])
 
+common_name = []
+for row in birds:
+    common_name.append(row[1])
+
+mean_body_masses = []
+for row in birds:
+    mean_body_masses.append(row[2])

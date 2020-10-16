@@ -23,6 +23,6 @@ for f in *.tif;
             echo "Converting $f";
             convert "$f"  "$(basename "$f" .tif).png";
         else
-            echo "There is no .tif file"
+            echo "There is no .tif file in the current directory"
         fi 
     done
