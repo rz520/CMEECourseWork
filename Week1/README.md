@@ -38,8 +38,8 @@ Please download all of the files in a suitable directory.
 FirstBiblio.bib	and FirstExample.tex are input files of LaTeX practice.
 
 ### Data
-Input files: 1800.csv, 1801.csv, 1802.csv,1803.csv, 407228326.fasta, 407228412.fasta, E.coli.fasta, spawannxs.txt
-Output files: 1800.csv.txt, 1801.csv.txt, 1802.csv.txt,1803.csv.txt
+- Input files: 1800.csv, 1801.csv, 1802.csv,1803.csv, 407228326.fasta, 407228412.fasta, E.coli.fasta, spawannxs.txt
+- Output files: 1800.csv.txt, 1801.csv.txt, 1802.csv.txt,1803.csv.txt
 
 ### Sandbox
 All of these directories and files are just used for testing command or scripts, usually nonsense.
