@@ -26,6 +26,8 @@ then
         rm *.out
         rm *.snm
         rm *.toc
+        rm *.bbl
+        rm *.blg
     else
         echo "The file doesn't exist or you should type a filename with a suffix .tex"
     fi 
