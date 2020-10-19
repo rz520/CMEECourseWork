@@ -1,0 +1,683 @@
+Starting weekly feedback for Rui, Week1
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 1.58 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: .git, Feedback, Week1, Week2
+
+Found the following files in parent directory: README.md, .gitignore
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+
+**********************************************************************
+*~ 
+*.tmp
+.DS_Store
+__pycache__
+.log
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+
+**********************************************************************
+# My CMEE Coursework Repository
+
+## Coding and Data Abalysis Practices in Ecology and Evolution
+## Discription
+This is a union of coding and data analysis practices in the realm of life science.
+
+## Languages
+Bash, LaTeX, Python, R
+
+## Dependencies
+LaTeX, Python, R
+
+## Installation
+Please download all of the files in a suitable directory.
+
+## Project Structure and Usage: 
+This project is divided into several weeks. Each week focuses on a theme. Details of scripts usage please read README.md in subdirectory.
+
+## Author and contact
+Rui Zhang   rui.zhang20@imperial.ac.uk
+**********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 2 weekly directories: Week1, Week2
+
+The Week1 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK1...
+
+Found the following directories: data, code, sandbox, result
+
+Found the following files: README.md
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+
+**********************************************************************
+# First Week Readme
+
+## Unix, Shell and LaTeX Practice
+## Discription
+This is a union of Unix, Shell, LaTeX learning and practicing database, which contains shell
+scripts, input data or files and some of the output files.
+There are 34 directories including code, data, result and sandbox. 
+- Code contains all of the shell scripts and LaTeX practice input files and output files.
+- Data contains txt, csv and fasta files downloaded from [CMEECourse website](https://github.com/mhasoba/TheMulQuaBio/tree/master/content/data). There are also output files after dealing with data files.
+- Result only contains one file that is the latex practice output file.
+- Sandbox contains test files to practice command usage.
+
+## Languages
+Bash, LaTeX
+
+## Dependencies
+CompileLaTeX.sh depends on LaTeX installed.
+
+## Installation
+Please download all of the files in a suitable directory.
+
+## Project Structure and Usage: 
+### Code
+**Please remember to run these shell scripts in code directory.**
+*Details of usage and matters need attention please read README.md in Code directory*
+
+- CompileLaTeX.sh: compile the text file into a pdf file and open the pdf file.
+- ConcatenateTwoFiles.sh: merge 2 files into a new file.
+- CountLines.sh: count the number of lines of the input file.
+- MyExampleScript.sh: shell scripts variables usage practice.
+- UnixPrac1.txt: a union of 5 unix shell commands dealing with fasta files in data directory.
+- boilerplate.sh: simple boilerplate for shell scripts.
+- csvtospace.sh: substitude the commas in the file with spaces.
+- tabtocsv.sh: substitude the tabs in the file with commas.
+- tiff2png.sh: convert tiff file to png file in the current dictionary.
+- variables.sh: practice 3 ways to assign values to variables in shell scripts.
+
+FirstBiblio.bib	and FirstExample.tex are input files of LaTeX practice.
+
+### Data
+- Input files: 1800.csv, 1801.csv, 1802.csv,1803.csv, 407228326.fasta, 407228412.fasta, E.coli.fasta, spawannxs.txt
+- Output files: 1800.csv.txt, 1801.csv.txt, 1802.csv.txt,1803.csv.txt
+
+### Sandbox
+All of these directories and files are just used for testing command or scripts, usually nonsense.
+
+## Author and contact
+Rui Zhang   rui.zhang20@imperial.ac.uk
+**********************************************************************
+
+Found following files in results directory: FirstExample.pdf...
+
+Ideally, Results directory should be empty other than, perhaps a .gitkeep. 
+
+ 0.5 pts deducted per results file 
+
+Current Points = 99.5
+
+Found 12 code files: ConcatenateTwoFiles.sh, tiff2png.sh, UnixPrac1.txt, variables.sh, CountLines.sh, FirstBiblio.bib, csvtospace.sh, CompileLaTeX.sh, boilerplate.sh, FirstExample.tex, tabtocsv.sh, MyExampleScript.sh
+
+Found the following extra files: README.md
+0.5 pt deducted per extra file
+
+Current Points = 99.0
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file ConcatenateTwoFiles.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: ConcatenateTwoFiles.sh
+# Description: merge 2 files into a new file
+#
+# Saves the output into a new given name file
+# Arguments: 1 -> input file; 2 -> input file; 3 -> output file
+# Date: Oct 2020
+
+if [ -n "$1" ]
+then
+  if [ -n "$2" ]
+  then
+      if [ -n "$3" ]
+      then
+          cat $1 > $3    #cat command can automaticcally report the error if the input file doesn't exist
+          cat $2 >> $3
+          echo "Merged File is"
+          cat $3
+      else
+          echo "You should give the output file name"
+      fi
+    else
+        echo "There is no second input file"
+    fi
+else
+  echo "You should give 2 input files and the output file name"
+fi 
+**********************************************************************
+
+Testing ConcatenateTwoFiles.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+You should give 2 input files and the output file name
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00694s
+
+======================================================================
+Inspecting script file tiff2png.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: tiff2png.sh
+# Description: convert tiff file to png file
+#
+# Saves the output into a .png file
+# Arguments: f -> tiff file
+# Date: Oct 2020
+
+for f in *.tiff;
+    do 
+        if [ -e $f ]
+        then
+            mv $f $(basename $f .tiff).tif;
+            echo "Change the suffix of $f from .tiff to .tif"
+        fi
+    done
+
+for f in *.tif; 
+    do
+        if [ -e $f ]
+        then
+            echo "Converting $f";
+            convert "$f"  "$(basename "$f" .tif).png";
+        else
+            echo "There is no .tif file in the current directory"
+        fi 
+    done
+
+**********************************************************************
+
+Testing tiff2png.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+There is no .tif file in the current directory
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00543s
+
+======================================================================
+Inspecting script file UnixPrac1.txt...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: UnixPrac1.txt
+# Description: fasta practices using unix shell commands
+#
+# Print the output on the screen
+# Arguments: call the fasta file from ../data dictionary
+# Date: Oct 2020
+
+#1
+wc -l ../data/E.coli.fasta ../data/407228326.fasta ../data/407228412.fasta
+#count lines in each fasta file
+
+#2
+cat ../data/E.coli.fasta | sed 1d
+#print E.coli.fasta from the second line
+
+#3
+cat ../data/E.coli.fasta | sed 1d |  tr -d "\n" | wc -c 
+#count the E.coli.fasta sequence length
+
+#4
+cat ../data/E.coli.fasta | sed 1d | tr -d "\n" | grep -o "ATGC" | wc -l
+#open E.coli.fasta, delete the first line, delete newline character, match "ATGC" ang then count the line
+
+#5
+echo "scale=20; $(cat ../data/E.coli.fasta | sed 1d | grep -oE "A|T" | wc -l) / $(cat ../data/E.coli.fasta | sed 1d | grep -oE "C|G" | wc -l)" | bc
+#use bc to calculater the ratio, the relative number of A|T and G|C is counted by wc after deleting the first line and matching by grep
+
+#or
+#a=$(cat ../data/E.coli.fasta | sed 1d | grep -oE "A|T" | wc -l) | b=$(cat ../data/E.coli.fasta | sed 1d | grep -oE "C|G" | wc -l) | echo "scale=20; $a / $b"| bc
+#print the fasta file, delete the first line, match A|T, use wc count number and give the number to a, the same as number of C|G to b, then use bc to calculate the ratio
+**********************************************************************
+
+Testing UnixPrac1.txt...
+
+======================================================================
+Inspecting script file variables.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: variables.sh
+# Description: practice 3 ways to assign values to variables in shell scripts
+# Date: Oct 2020
+
+# Shows the use of  variables
+MyVar='some string'
+echo 'the current value of the variable is' $MyVar
+echo 'Please enter a new string'
+read MyVar
+echo 'the current value of the variable is' $MyVar
+
+## Reading multiple values
+echo 'Enter two numbers separated by space(s)'
+read a b
+echo 'you entered' $a 'and' $b '. Their sum is :'
+mysum=`expr $a + $b`
+echo $mysum
+
+**********************************************************************
+
+Testing variables.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+the current value of the variable is some string
+Please enter a new string
+the current value of the variable is
+Enter two numbers separated by space(s)
+you entered and . Their sum is :
+
+
+**********************************************************************
+
+Encountered error (or warning):
+expr: syntax error: missing argument after ‘+’
+
+======================================================================
+Inspecting script file CountLines.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: CountLines.sh
+# Description: count the number of lines of the input file
+#
+# print the outcome on the screen
+# Arguments: 1 -> input file
+# Date: Oct 2020
+
+if [ -n "$1" ]    # please give a relative path to $1 when use this shell script 
+then
+    NumLines=`wc -l < $1`
+    echo "The file $1 has $NumLines lines"
+    echo
+else
+    echo "There is no input file"
+fi 
+**********************************************************************
+
+Testing CountLines.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+There is no input file
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00626s
+
+======================================================================
+Inspecting script file FirstBiblio.bib...
+
+File contents are:
+
+**********************************************************************
+@article{einstein1905does,
+  title={Does the inertia of a body depend upon its energy-content},
+  author={Einstein, Albert},
+  journal={Ann Phys},
+  volume={18},
+  pages={639--641},
+  year={1905}
+}
+**********************************************************************
+
+Testing FirstBiblio.bib...
+
+======================================================================
+Inspecting script file csvtospace.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: csvtospace.sh
+# Description: substitute the commas in the files with spaces
+#
+# Saves the output into a .txt file
+# Arguments: 1 -> comma delimited file
+# Date: Oct 2020
+
+if [ -n "$1" ]    # please give a relative path to $1 when use this shell script 
+then
+    if [ -e $1 ]
+    then
+        if [ $(grep -o "," $1 | wc -l) != 0 ]
+        then
+            echo "Creating a space delimited version of $1 ..."
+            cat $1 | tr -s "," " " >> $1.txt
+            echo "Done!"
+        else
+            echo "$1 is not a comma delimited file"
+        fi
+    else
+        echo "$1 does not exist"
+    fi
+else 
+   echo "There is no input file"
+fi 
+**********************************************************************
+
+Testing csvtospace.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+There is no input file
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00419s
+
+======================================================================
+Inspecting script file CompileLaTeX.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: CompileLaTeX.sh
+# Description: compile the text file into a pdf file and open the pdf file
+#
+# Saves the output into a pdf file
+# Arguments: 1 -> text file
+# Date: Oct 2020
+
+if [ -n "$1" ]
+then
+    if [ -e $1 ]
+    then
+        pdflatex $1
+        pdflatex $1
+        bibtex $(basename $1 .tex)
+        pdflatex $1
+        pdflatex $1
+        evince $(basename $1 .tex).pdf &    #if you are a mac user, please install evince at first
+        ## Cleanup
+        rm *~
+        rm *.aux
+        rm *.dvi
+        rm *.log
+        rm *.nav
+        rm *.out
+        rm *.snm
+        rm *.toc
+        rm *.bbl
+        rm *.blg
+    else
+        echo "The file doesn't exist or you should type a filename with a suffix .tex"
+    fi 
+else
+    echo "There is no input file"
+fi 
+
+**********************************************************************
+
+Testing CompileLaTeX.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+There is no input file
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00546s
+
+======================================================================
+Inspecting script file boilerplate.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: boilerplate.sh
+# Desc: simple boilerplate for shell scripts
+# Arguments: none
+# Date: Oct 2020
+
+echo -e "\nThis is a shell script! \n"
+
+#exit
+
+**********************************************************************
+
+Testing boilerplate.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+
+This is a shell script! 
+
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00660s
+
+======================================================================
+Inspecting script file FirstExample.tex...
+
+File contents are:
+
+**********************************************************************
+\documentclass[12pt]{article}
+
+\title{A Simple Document}
+
+\author{Rui}
+
+\date{}
+
+\begin{document}
+  \maketitle
+  
+  \begin{abstract}
+    This paper must be cool!
+  \end{abstract}
+  
+  \section{Introduction}
+    Blah Blah!
+  
+  \section{Materials \& Methods}
+  One of the most famous equations is :
+  \begin{equation}
+    E = mc^2
+  \end{equation}
+  This equation was first proposed by Einstein in 1905
+  \cite{einstein1905does}.
+  
+  \bibliographystyle{plain}
+  \bibliography{FirstBiblio}
+\end{document}
+**********************************************************************
+
+Testing FirstExample.tex...
+
+======================================================================
+Inspecting script file tabtocsv.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: tabtocsv.sh
+# Description: substitute the tabs in the files with commas
+#
+# Saves the output into a .csv file
+# Arguments: 1 -> tab delimited file
+# Date: Oct 2020
+
+if [ -n "$1" ]    # please give a relative path to $1 when use this shell script 
+then
+    if [ -e $1 ]
+    then
+        if [ $(grep -o "\t" $1 | wc -l) != 0 ]
+        then
+            echo "Creating a comma delimited version of $1 ..."
+            cat $1 | tr -s "\t" "," >> $1.csv
+            echo "Done!"
+        else
+            echo "$1 is not a tab delimited file"
+        fi
+    else
+        echo "$1 does not exist"
+    fi
+else 
+   echo "There is no input file"
+fi 
+**********************************************************************
+
+Testing tabtocsv.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+There is no input file
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00458s
+
+======================================================================
+Inspecting script file MyExampleScript.sh...
+
+File contents are:
+
+**********************************************************************
+#!/bin/bash
+# Author: Rui rui.zhang20@imperial.ac.uk
+# Script: MyExampleScript.sh
+# Description: shell scripts variables usage practice
+#
+# Print the out come on the screen
+# Arguments: USER -> username
+# Date: Oct 2020
+
+msg1="Hello"
+msg2=$USER
+echo "$msg1 $msg2"
+echo "Hello $USER"
+echo
+
+**********************************************************************
+
+Testing MyExampleScript.sh...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+Hello mhasoba
+Hello mhasoba
+
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.00641s
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 1 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 99.0
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
