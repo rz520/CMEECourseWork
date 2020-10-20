@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """Description of this program or application.
-You can use seceral lines"""
+You can use several lines"""
 
 __appname__ = 'boilerplate'
 __author__ = 'Rui Zhang (rui.zhang20@imperial.ac.uk)'

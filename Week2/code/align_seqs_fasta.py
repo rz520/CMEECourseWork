@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 """Align 2 seqs and find the best matched alignment.
-The input file should be a csv file containing 2 DNA names and sequences in 2 rows respectively.
-The best alignment will be stored in ../result/seq_align.txt"""
+The input files should be 2 fasta files.
+The best alignment will be stored in ../result/seq_align_fasta.txt"""
 
-__appname__ = 'align_seqs'
+__appname__ = 'align_seqs_fasta'
 __author__ = 'Rui Zhang (rui.zhang20@imperial.ac.uk)'
 __version__ = '0.0.1'
 
@@ -13,16 +13,25 @@ import sys
 import csv
 
 ## functions ##
-def readseq(filepath):
+def readfasta(filepath):
+    global seq
+    global seqname
+    with open(filepath, 'r') as fastafile:
+        lines = fastafile.readlines()
+        line = [line.replace('\n', '') for line in lines]
+        linenumber = len(line)
+        seq = ''
+        for i in range(1, linenumber):
+            seq = seq + line[i]
+
+def readsequence(f1,f2):
     global seq1
     global seq2
-    with open(filepath, 'r') as csvfile:
-        reader = csv.reader(csvfile)
-        for i,rows in enumerate(reader):
-            if i == 0:
-                seq1 = rows[1]
-            elif i == 1:
-                seq2 = rows[1]
+    readfasta(f1)
+    seq1 = seq
+    readfasta(f2)
+    seq2 = seq
+
 
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
@@ -67,7 +76,7 @@ def find_best_align(s1, s2, l1, l2):
         if z > my_best_score:
             my_best_align = "." * i + s2 # think about what this is doing!
             my_best_score = z 
-    outputfile = open("../result/seq_align.txt","a")  # store best alignment in a txt file
+    outputfile = open("../result/seq_align_fasta.txt","a")  # store best alignment in a txt file
     print(my_best_align, file = outputfile)
     print(s1, file = outputfile)
     print("Best score:", my_best_score, file = outputfile)
@@ -75,13 +84,17 @@ def find_best_align(s1, s2, l1, l2):
 
 def main(argv):
     """ Main entry point of the program """
-    readseq('../data/examplefasta.csv')
+    if len(argv) == 3:
+        readsequence(argv[1],argv[2])
+    elif len(argv) ==1:
+        readsequence('../data/seq1.fasta', '../data/seq2.fasta')
     sortseq(seq1, seq2)
     find_best_align(s1, s2, l1, l2)
-    print('There is an output file as ../result/seq_align.txt')
+    print('There is an output file as ../result/seq_align_fasta.txt')
     return 0
 
 if __name__ == "__main__":
     """Makes sure the "main" function is called from command line"""
     status = main(sys.argv)
     sys.exit(status)
+

@@ -16,7 +16,8 @@ then
         bibtex $(basename $1 .tex)
         pdflatex $1
         pdflatex $1
-        evince $(basename $1 .tex).pdf &    #if you are a mac user, please install evince at first
+        mv $(basename $1 .tex).pdf ../result
+        evince ../result/$(basename $1 .tex).pdf &    #if you are a mac user, please install evince at first
         ## Cleanup
         rm *~
         rm *.aux

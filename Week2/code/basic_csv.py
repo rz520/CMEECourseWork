@@ -4,9 +4,10 @@ import csv
 # 'Species', 'Infraorder', 'Family', 'Distribution', 'Body mass male (Kg)'
 f = open('../data/testcsv.csv', 'r')
 
+from itertools import islice
 csvread = csv.reader(f)
 temp = []
-for row in csvread:       #question: how to remove the first row of csv file
+for row in islice(csvread, 1, None):       # remove the first row of csv file
     temp.append(tuple(row))
     print(row)
     print("The species is", row[0])
