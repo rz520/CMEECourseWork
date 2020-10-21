@@ -69,6 +69,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 # now try to find the best match (highest score) for the two sequences
 
 def find_best_align(s1, s2, l1, l2):     # recall pickle
+    global my_best_score
     my_best_align = None
     my_best_score = -1
     for i in range(l1): # Note that you just take the last alignment with the highest score
@@ -76,11 +77,21 @@ def find_best_align(s1, s2, l1, l2):     # recall pickle
         if z > my_best_score:
             my_best_align = "." * i + s2 # think about what this is doing!
             my_best_score = z 
-    outputfile = open("../result/seq_align_fasta.txt","a")  # store best alignment in a txt file
-    print(my_best_align, file = outputfile)
-    print(s1, file = outputfile)
-    print("Best score:", my_best_score, file = outputfile)
+
+
+def find_all_best_align(s1, s2, l1, l2,my_best_score):
+    my_best_align = None
+    outputfile = open("../result/all_best_align.txt","a")
+    for i in range(l1):
+        z = calculate_score(s1, s2, l1, l2, i)
+        if z == my_best_score:
+            my_best_align = "." * i + s2
+            print(my_best_align, file = outputfile)
+            print(s1, file = outputfile)
+            print("Best score:", my_best_score, file = outputfile)
     outputfile.close()
+
+
 
 def main(argv):
     """ Main entry point of the program """
@@ -90,7 +101,8 @@ def main(argv):
         readsequence('../data/seq1.fasta', '../data/seq2.fasta')
     sortseq(seq1, seq2)
     find_best_align(s1, s2, l1, l2)
-    print('There is an output file as ../result/seq_align_fasta.txt')
+    find_all_best_align(s1, s2, l1, l2,my_best_score)
+    print('There is an output file as ../result/all_best__align.txt')
     return 0
 
 if __name__ == "__main__":
