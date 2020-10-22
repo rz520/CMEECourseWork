@@ -1,3 +1,5 @@
+"""Some practices on basic commands in csv package to manipulate CSV file"""
+
 import csv
 
 # Read a file containing:

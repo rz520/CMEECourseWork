@@ -1,3 +1,5 @@
+"""Import data in python practice"""
+
 ##################
 #FILE INPUT
 ##################

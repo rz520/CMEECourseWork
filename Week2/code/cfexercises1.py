@@ -48,7 +48,6 @@ def foo_5(x=5):
     if x == 1:
         return 1
     return x * foo_5(x - 1)
-    print("The factorial of %d is %d." % (x, foo_5(x)))   # no idea
 
 def foo_7(x=5):
     """Print the outcome of foo_5, used with foo_5"""
@@ -65,6 +64,7 @@ def foo_6(x=5):
     return "The factorial of %d is %d." % (y, facto)
 
 def main(argv):
+    """ Main entry point of the program """
     print(foo_1(4))
     print(foo_1(9))
     print(foo_2(1,2))
@@ -82,5 +82,6 @@ def main(argv):
     return 0
 
 if __name__ == "__main__":
+    """Makes sure the "main" function is called from command line"""
     status = main(sys.argv)
     sys.exit(status)

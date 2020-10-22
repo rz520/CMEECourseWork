@@ -1,3 +1,5 @@
+"""For loops and while loops practices in python"""
+
 # FOR loops in Python
 for i in range(5):
     print(i)

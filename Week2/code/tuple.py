@@ -1,3 +1,5 @@
+"""This is a practice about printing every singel element in a tuple of tuples on a seperate line"""
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),

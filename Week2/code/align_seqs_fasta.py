@@ -10,7 +10,6 @@ __version__ = '0.0.1'
 
 ## import ##
 import sys
-import csv
 
 ## functions ##
 def readfasta(filepath):

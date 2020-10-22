@@ -1,3 +1,5 @@
+"""Loops and comprehensions examples in finding oak trees from a list of species"""
+
 ## Finds just those taxa that are oak trees from a list of species
 
 taxa = [ 'Quercus robur',
@@ -8,6 +10,7 @@ taxa = [ 'Quercus robur',
          ]
 
 def is_an_oak(name):
+    """Judge whether the species is oak trees"""
     return name.lower().startswith('quercus')
 
 ## Using for loops

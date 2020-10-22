@@ -1,3 +1,5 @@
+"""This python script shows comprehensions and conventional loops usages when creating lists from a tuple"""
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),

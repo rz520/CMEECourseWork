@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Some functions exemplifying the use of control statements"""
+"""Using doctest to run embedded tests on some functions exemplifying the use of control statements"""
 
 __author__ = 'Rui Zhang(rui.zhang20@imperial.ac.uk)'
 __version__ = '0.0.1'

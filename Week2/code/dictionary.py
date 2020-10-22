@@ -1,3 +1,5 @@
+"""This python script populates a dictionary 'taxa_dic' derived from a list 'taxa', mapping order names to sets of taxa"""
+
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),
          ('Peromyscus crinitus', 'Rodentia'),
@@ -21,7 +23,8 @@ for i in range(10):
         for j in order:
                 if taxa[i][1] == j:
                         taxa_dic.setdefault(j, set([])).add(taxa[i][0])
-taxa_dic
+
+print(taxa_dic)
 
 # Method 2
 # from collections import defaultdict

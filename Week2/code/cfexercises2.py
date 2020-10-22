@@ -1,3 +1,5 @@
+"""Some exemples show the use of loops and conditionals combined"""
+
 for j in range(12):
     if j % 3 == 0:
         print('hello')

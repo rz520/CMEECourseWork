@@ -1,3 +1,5 @@
+"""Pickle practice on saving an object for later use"""
+
 ##############
 # STRONG OBJECTS
 ##############
