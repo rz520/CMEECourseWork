@@ -1,4 +1,7 @@
+"""An example shows how to debug in python"""
+
 def buggyfunc(x):
+    """An example function to show how to debug"""
     y = x
     for i in range(x):
         try:

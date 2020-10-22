@@ -20,11 +20,16 @@ rainfall = (('JAN',111.4),
 # the amount of rain was greater than 100 mm.
 
 over_100 = [row for row in rainfall if row[1] > 100]
+
+print(over_100)
+print()
  
 # (2) Use a list comprehension to create a list of just month names where the
 # amount of rain was less than 50 mm. 
 
 less_50 = [row[0] for row in rainfall if row[1] < 50]
+print(less_50)
+print()
 
 # (3) Now do (1) and (2) using conventional loops (you can choose to do 
 # this before 1 and 2 !). 
@@ -38,3 +43,7 @@ less_50 = []
 for row in rainfall:
     if row[1] < 50:
         less_50.append(row[0])
+
+print(over_100)
+print()
+print(less_50)
