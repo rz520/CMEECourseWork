@@ -24,5 +24,16 @@ stochrick<-function(p0=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100)
 # Now write another function called stochrickvect that vectorizes the above 
 # to the extent possible, with improved performance: 
 
+stochrickvect <- function(p=runif(1000,.5,1.5),r=1.2,K=1,sigma=0.2,numyears=100){
+  rick <- function(){
+    p <- p * exp(r * (1 - p/K)) + rnorm(1,0,sigma)
+    return(p)
+  }
+  result <- sapply(2:numyears, function(i) rick())
+  result <- rbind(p, t(result))
+  return(result)
+}
+
+
 # print("Vectorized Stochastic Ricker takes:")
 # print(system.time(res2<-stochrickvect()))

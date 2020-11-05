@@ -13,6 +13,7 @@ import sys
 
 ## functions ##
 def readfasta(filepath):
+    """Read the sequence from a fasta file"""
     global seq
     global seqname
     with open(filepath, 'r') as fastafile:
@@ -24,6 +25,7 @@ def readfasta(filepath):
             seq = seq + line[i]
 
 def readsequence(f1,f2):
+    """Read 2 sequences from 2 fasta files as seq1 and seq2"""
     global seq1
     global seq2
     readfasta(f1)
@@ -36,6 +38,7 @@ def readsequence(f1,f2):
 # l1 is length of the longest, l2 that of the shortest
 
 def sortseq(seq1, seq2):
+    """Compare the length of 2 sequences, regard the longer one as s1, and the shorter one as s2"""
     global l1
     global l2
     global s1
@@ -54,6 +57,7 @@ def sortseq(seq1, seq2):
 # A function that computes a score by returning the number of matches starting
 # from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """Compute the matching score of 2 sequences starting from a given startpoint"""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -68,6 +72,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 # now try to find the best match (highest score) for the two sequences
 
 def find_best_align(s1, s2, l1, l2):
+    """Find the best match for 2 sequences"""
     my_best_align = None
     my_best_score = -1
     for i in range(l1): # Note that you just take the last alignment with the highest score
