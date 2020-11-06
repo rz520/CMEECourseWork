@@ -25,10 +25,14 @@ TreeHeight <- function(degrees, distance){
   return(height)
 }
 
+# calculate height of trees and store them as a vector
 Height <- c()
 for (i in seq(nrow(TreeData))){
   Height <- c(Height, TreeHeight(TreeData[i,2],TreeData[i,3]))
 }
+
+# append trees height to the origin dataframe
 TreeData$Height.m <- Height
 
-write.csv(TreeData, file = '../result/TreeHts.csv')
+# export dataframe as a csv file
+write.csv(TreeData, file = '../result/TreeHts.csv', row.names = F)

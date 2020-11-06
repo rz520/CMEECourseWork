@@ -51,7 +51,7 @@ graphics.off()
 # calculating mean and median of log(predator mass), log(prey mass) and 
 # ratio of prey mass over predator mass, then save them into a csv file
 
-# mean
+# calculate means and transform tapply results to dataframes
 log.predmass.mean <- tapply(log(MyDF$Predator.mass), MyDF$Type.of.feeding.interaction, mean)
 log.predmass.mean <- as.data.frame(log.predmass.mean)
 log.preymass.mean <- tapply(log(MyDF$Prey.mass), MyDF$Type.of.feeding.interaction, mean)
@@ -59,7 +59,7 @@ log.preymass.mean <- as.data.frame(log.preymass.mean)
 log.sizeratio.mean <- tapply(log(MyDF$Prey.mass/MyDF$Predator.mass), MyDF$Type.of.feeding.interaction, mean)
 log.sizeratio.mean <- as.data.frame(log.sizeratio.mean)
 
-# median
+# calculate medians and transform tapply results to dataframes
 log.predmass.median <- tapply(log(MyDF$Predator.mass), MyDF$Type.of.feeding.interaction, median)
 log.predmass.median <- as.data.frame(log.predmass.median)
 log.preymass.median <- tapply(log(MyDF$Prey.mass), MyDF$Type.of.feeding.interaction, median)
@@ -67,10 +67,12 @@ log.preymass.median <- as.data.frame(log.preymass.median)
 log.sizeratio.median <- tapply(log(MyDF$Prey.mass/MyDF$Predator.mass), MyDF$Type.of.feeding.interaction, median)
 log.sizeratio.median <- as.data.frame(log.sizeratio.median)
 
-# combine all of means and medians together
+# combine all of means and medians together, add feeding type as the first column
 total <- cbind(log.predmass.mean, log.predmass.median, log.preymass.mean, log.preymass.median, 
                log.sizeratio.mean, log.sizeratio.median)
 total <- cbind(Type.of.feeding.interaction=row.names(total),total)
+
+# export means and medians to a csv file
 write.csv(total, "../result/PP_Results.csv", row.names = F)
 
 

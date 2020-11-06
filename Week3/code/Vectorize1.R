@@ -1,5 +1,10 @@
+# an example illustrating that vectorization can optimize code computational efficiency 
+# and make code more concise, easy to read, less prone
+
+# create a matrix
 M <- matrix(runif(1000000),1000,1000)
 
+# create a function to calculate sum of numbers by loops
 SumAllElements <- function(M){
   Dimensions <-dim(M)
   Tot <- 0
@@ -11,6 +16,7 @@ SumAllElements <- function(M){
   return(Tot)
 }
 
+# compare system time taken to operating vectorized function and non-vectorized function
 print("Using loops, the time taken is:")
 print(system.time(SumAllElements(M)))
 

@@ -1,3 +1,6 @@
+# use try keyword to catch the error and keep going instead of having R throw you out
+
+# write a function
 doit <- function(x){
   temp_x <- sample(x, replace = TRUE)
   if(length(unique(temp_x)) > 30){ # only take mean if sample was sufficient

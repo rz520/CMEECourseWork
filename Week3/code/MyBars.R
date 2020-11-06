@@ -1,7 +1,10 @@
 # use ggplot geom_text to annotate a plot
 
-install.packages("ggplot2")
+rm(list = ls())
 library(ggplot2)
+
+# load a csv file as data
+a <- read.table("../data/Results.txt", header = TRUE)
 
 a$ymin <- rep(0, dim(a)[1]) # append a column of zeros
 

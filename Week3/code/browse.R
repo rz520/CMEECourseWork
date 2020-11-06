@@ -1,3 +1,5 @@
+# use browser() to debug script, inserting a breakpoint in code and then stepping throuth code
+
 Exponential <- function(N0 = 1, r = 1, generations = 10){
   # Runs a simulation of exponential growth
   # Returns a vector of length generations
