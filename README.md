@@ -8,8 +8,8 @@ This is a union of coding and data analysis practices in the realm of life scien
 Shell, LaTeX, Python, R
 
 ## Dependencies
-LaTeX packeges: graphicx, caption, lineno, natbib
-R packages: reshape2, minpack.lm, ggplot2, maps, tidyvere, dplyr, broom
+LaTeX packeges: graphicx, caption, lineno, natbib\\
+R packages: reshape2, minpack.lm, ggplot2, maps, tidyvere, dplyr, broom\\
 Python modules: scipy, numpy, matplotlib.pylab, sys, subprocess, re, cProfile, timeit, time, csv, os, pandas, doctest
 
 ## Installation
