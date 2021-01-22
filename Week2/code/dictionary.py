@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """This python script populates a dictionary 'taxa_dic' derived from a list 'taxa', mapping order names to sets of taxa"""
 
 taxa = [ ('Myotis lucifugus','Chiroptera'),

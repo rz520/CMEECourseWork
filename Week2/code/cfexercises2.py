@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """Some exemples show the use of loops and conditionals combined"""
 
 for j in range(12):

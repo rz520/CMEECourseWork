@@ -1,4 +1,4 @@
-# First Week Readme
+# First Week README
 
 ## Unix, Shell and LaTeX Practice
 ## Discription

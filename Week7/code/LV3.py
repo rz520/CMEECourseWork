@@ -1,4 +1,10 @@
-# Fit the Lotka-Volterra with prey density dependence rR(1 - R/K), plot and save population dynamics between consumer and resource with input from command line
+#!/usr/bin/env python3
+
+"""Fit the Lotka-Volterra with prey density dependence rR(1 - R/K), plot and save population dynamics between consumer and resource with input from command line, discrete time version"""
+
+__appname__ = '[LV3.py]'
+__author__ = 'Joshua James Holley (joshua.holley20@imperial.ac.uk)'
+__version__ = '0.0.1'
 
 # import packages
 import scipy as sc
@@ -9,6 +15,7 @@ import sys
 
 # define a function that returns the growth rate of consumer and resource population at any given time step
 def dCR_dt(pops):
+    """Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space"""
     R = pops[0]
     C = pops[1]
     Rnext = R * (1 + r * (1 - R / K) - a * C)
@@ -29,7 +36,7 @@ def plot1(pops, t):
     p.ylabel('Population density')
     p.title('Consumer-Resource population dynamics')
     # save the figure as a pdf
-    f1.savefig('../result/LV3_model.pdf')
+    f1.savefig('../Results/LV3_model.pdf')
 
 
 def plot2(pops): 
@@ -43,7 +50,7 @@ def plot2(pops):
     p.ylabel('Consumer density')
     p.title('Consumer-Resource population dynamics')
     # save the figure as a pdf
-    f2.savefig('../result/LV3_model1.pdf')
+    f2.savefig('../Results/LV3_model1.pdf')
 
 def main(argv):
     """main function of the program"""

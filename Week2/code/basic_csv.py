@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """Some practices on basic commands in csv package to manipulate CSV file"""
 
 import csv

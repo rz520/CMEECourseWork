@@ -1,5 +1,6 @@
-"""practice on regular expressions in python, catching Kingdom, Phylum
-and Species names in a txt file """
+#!/usr/bin/env python3
+
+"""practice on regular expressions in python, catching Kingdom, Phylum and Species names in a txt file """
 
 import re
 

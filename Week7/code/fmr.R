@@ -1,5 +1,4 @@
-# Plots log(field metabolic rate) against log(body mass) for the Nagy et al 
-# 1999 dataset to a file fmr.pdf.
+# draw log(field metabolic rate) against log(body mass) for the NagyEtAl1999.csv dataset and save the graph to a file fmr_plot.pdf in result directory
 
 cat("Reading CSV\n")
 

@@ -1,6 +1,6 @@
-# numerical integration using scipy, like calculating the area under a curve
-# a particularly useful application is solving ordinary differential equations
-# there is an example about Lotka-Volterra model
+#!/usr/bin/env python3
+
+""" numerical integration using scipy, like calculating the area under a curve a particularly useful application is solving ordinary differential equations. There is an example about Lotka-Volterra model """
 
 # import packages
 import scipy as sc

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """For loops and while loops practices in python"""
 
 # FOR loops in Python

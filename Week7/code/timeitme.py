@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """quick profiling with timeit to figure out what the best way to do some
 specific as part of a larger program might be"""
 

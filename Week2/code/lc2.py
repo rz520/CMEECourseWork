@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """This python script is another practice on comprehension and conventional loops"""
 
 # Average UK Rainfall (mm) for 1910 by month

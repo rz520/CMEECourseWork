@@ -5,7 +5,7 @@
 This is a union Python learning and practicing database, which contains python scripts, input data or files and some of the output files.
 There are 4 directories including code, data, result and sandbox. 
 - Code contains all of the python scripts.
-- Data contains a csv files downloaded from [CMEECourse website](https://github.com/mhasoba/TheMulQuaBio/tree/master/content/data). There is also an output file after dealing with data files. Furthermore, there are 3 other files as default input files of some python scripts in code directory.
+- Data contains 2 csv files downloaded from [CMEECourse website](https://github.com/mhasoba/TheMulQuaBio/tree/master/content/data). There is also an output file after dealing with data files. Furthermore, there are 3 other files as default input files of some python scripts in code directory.
 - Result only contains a .gitignore file.
 - Sandbox contains test files to practice command usage.
 
@@ -13,7 +13,7 @@ There are 4 directories including code, data, result and sandbox.
 Python
 
 ## Dependencies
-None
+Python modules: csv, sys, doctest
 
 ## Installation
 Please download all of the files in a suitable directory.
@@ -21,7 +21,9 @@ Please download all of the files in a suitable directory.
 ## Project Structure and Usage: 
 **Please remember to run these shell scripts in code directory.**
 ### Code
-- align_seqs.py: Align 2 seqs and find the best matched alignment. The input files should be 2 fasta files. The best alignment will be stored in ../result/seq_align_fasta.txt
+- align_seqs.py: Align 2 seqs and find the best matched alignment. The input files should be 2 fasta files. The best alignment will be stored in ../result/seq_align.txt
+- align_seqs_better.py: Align 2 seqs and find the best matched alignment. The input files should be 2 fasta files. All of the best alignments will be stored in ../result/all_best__align.txt (group work)
+- align_seqs_fasta.py: Align 2 seqs and find the best matched alignment. The input files should be 2 fasta files. The best alignment will be stored in ../result/seq_align_fasta.txt (group work)
 - basic_csv.py: Some practices on basic commands in csv package to manipulate CSV file
 - basic_io1.py: Import data in python practice
 - basic_io2.py: Export data in python practice
@@ -36,6 +38,7 @@ Please download all of the files in a suitable directory.
 - lc2.py: This python script is another practice on comprehension and conventional loops
 - loops.py: For loops and while loops practices in python
 - oaks.py: Loops and comprehensions examples in finding oak trees from a list of species
+- oaks_debugme.py: oaks_debugme.py loops over the rows in TestOaksData.csv and writes the oak trees with Genus 'Quercus' into JustOaksData.csv. This script does not accept any other Genus other than/outside of  the specified string 'quercus'. The header rows are also excluded (if it exists) in its search for oaks and rather includes them in JustOaksData.csv. (group work)
 - scope.py: Some examples explaining variable scope in python
 - sysargv.py: An example shows what is sys.argv and how to use it
 - test_control_flow.py: Using doctest to run embedded tests on some functions exemplifying the use of control statements
@@ -43,7 +46,7 @@ Please download all of the files in a suitable directory.
 - using_name.py: Explain the last part of python program "if _name__ == '_main__'" meaning 
 
 ### Data
-- Input files: testcsv.csv, examplefasta.csv, seq1.fasta, seq2.fasta
+- Input files: testcsv.csv, examplefasta.csv, seq1.fasta, seq2.fasta, TestOaksData.csv
 - Output files: bodymass.csv
 
 ### Result

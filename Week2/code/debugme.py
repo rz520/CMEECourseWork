@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """An example shows how to debug in python"""
 
 def buggyfunc(x):

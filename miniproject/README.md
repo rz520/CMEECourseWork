@@ -1,4 +1,4 @@
-# MiniProject Readme
+# MiniProject README
 
 ## Computational Biology Techniques Concrete Exercise
 ## Description
@@ -11,6 +11,11 @@ The second and third models are nonlinear models, fitted by the means of Nonline
 (NLLS). Akaike information criterion, Schwarz criterion and the residual sum of squares are calculated 
 to select which model fit best. Also, this project should be fully reproducible from data management, model 
 fitting, data analysis to report creation.
+There are 4 directories including code, data, result and sandbox. 
+- Code contains all of the scripts.
+- Data contains csv files downloaded from [CMEECourse website](https://github.com/mhasoba/TheMulQuaBio/tree/master/content/data). There is also an output file after dealing with data files.
+- Result only contains a .gitignore file and a prepared report pdf file.
+- Sandbox contains test files to practice command usage.
 
 ## Languages
 Bash, LaTeX, Python, R
@@ -27,12 +32,12 @@ Please download all of the files in a suitable directory.
 **Please remember to run these shell scripts in code directory.**
 ### Code
 - CompileLaTeX.sh: compile the LATEX file into a pdf file as the report, save it in result directory and delete unnecessary files
-- model_fitting.R: divide datasets and fit cubic, logistic and Gompertz model to these datasets with drawing fitting lines and saving graphs in result/modelfitting directory, also AIC, BIC and Rsq are calculated and save as csv files
-- model_fitting.tex: the main LATEX file of report
-- run_MiniProject.py: a workflow of miniproject combines all of R scripts, shell scripts and LATEX scripts together as a whole program
 - data_preparation.R: this script pretreat data before fit models to experiments data including data wrangling and unreasonable data deletion
+- model_fitting.R: divide datasets and fit cubic, logistic and Gompertz model to these datasets with drawing fitting lines and saving graphs in result/modelfitting directory, also AIC, BIC and Rsq are calculated and save as csv files
 - model_fitting.bib: the bibliography file of report
+- model_fitting.tex: the main LATEX file of report
 - plot_analysis.R: This script analyse AIC, BIC and Rsq of cubic, logistic and Gompertz model, and then draw graph and save table to visualize model fitting performance
+- run_MiniProject.py: a workflow of miniproject combines all of R scripts, shell scripts and LATEX scripts together as a whole program
 - titlepage.tex: a separate title page of report which will be input in model_fitting.tex
 
 ### Data

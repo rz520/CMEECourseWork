@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """Loops and comprehensions examples in finding oak trees from a list of species"""
 
 ## Finds just those taxa that are oak trees from a list of species

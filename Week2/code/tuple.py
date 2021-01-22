@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """This is a practice about printing every singel element in a tuple of tuples on a seperate line"""
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),

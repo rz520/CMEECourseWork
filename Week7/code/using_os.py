@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """ This is a practice on os module to get a list of files and directories
 in home directory filtered by different demands"""
 

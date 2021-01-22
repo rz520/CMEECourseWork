@@ -1,5 +1,6 @@
-# to findout what is slowing down code, we need to profile code
-# write an illustrative program, here is a comprehension version
+#!/usr/bin/env python3
+
+"""to findout what is slowing down code, we need to profile code write an illustrative program, here is a comprehension version"""
 
 def my_squares(iters):
     """a function calculate squares from 0 to input number"""

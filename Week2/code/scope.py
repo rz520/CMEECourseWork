@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """Some examples explaining variable scope in python"""
 
 # block 1: illustrate what is global variable and what is local variable

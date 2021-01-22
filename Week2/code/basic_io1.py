@@ -1,3 +1,5 @@
+#!/usr/bin/env python3 
+
 """Import data in python practice"""
 
 ##################

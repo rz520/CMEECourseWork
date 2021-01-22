@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """some regexes examples in python using re module"""
 
 # import module
