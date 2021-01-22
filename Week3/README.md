@@ -14,6 +14,8 @@ R, Python, Shell
 
 ## Dependencies
 R packages: maps, ggplot2, tidyvere, dplyr, broom
+
+
 Python modules: numpy, sys, time, csv, os, pandas
 
 ## Installation

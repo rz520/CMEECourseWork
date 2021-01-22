@@ -22,7 +22,11 @@ Shell, LaTeX, Python, R
 
 ## Dependencies
 Python modules: subprocess, sys
+
+
 R packages: reshape2, minpack.lm and ggplot2
+
+
 LaTeX packages: graphicx, caption, lineno, natbib
 
 ## Installation
