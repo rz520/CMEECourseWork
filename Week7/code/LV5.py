@@ -8,13 +8,14 @@ import matplotlib.pylab as p
 import sys
 
 # define a function that returns the growth rate of consumer and resource population at any given time step
-def dCR_dt(pops, t=0):
+def dCR_dt(pops):
     R = pops[0]
     C = pops[1]
-    dRdt = r * R * (1 - R / K) - a * R * C
-    dCdt = -z * C + e * a * R * C
-
-    return np.array([dRdt, dCdt])
+    w1 = np.random.normal(0, 0.1)
+    w2 = np.random.normal(0, 0.1)
+    Rnext = R * (1 + (w1 + r) * (1 - R / K) - a * C)
+    Cnext = C * (1 - z + w2 + e * a * R)
+    return np.array([Rnext, Cnext])
 
 
 def plot1(pops, t): 
@@ -26,12 +27,11 @@ def plot1(pops, t):
     p.plot(t, pops[:,1], 'b-', label = 'Consumer density')
     p.grid()
     p.legend(loc='best')
-    p.text(15, 12, 'r = %s\na = %s\nz = %s\ne = %s' % (r, a, z, e), horizontalalignment='right', verticalalignment = "top")
     p.xlabel('Time')
     p.ylabel('Population density')
     p.title('Consumer-Resource population dynamics')
     # save the figure as a pdf
-    f1.savefig('../result/LV2_model.pdf')
+    f1.savefig('../result/LV5_model.pdf')
 
 
 def plot2(pops): 
@@ -41,36 +41,40 @@ def plot2(pops):
     # plot consumer density and resource density in another way
     p.plot(pops[:,0], pops[:,1], 'r-')
     p.grid()
-    p.text(12, 7, 'r = %s\na = %s\nz = %s\ne = %s' % (r, a, z, e), horizontalalignment='right', verticalalignment = "top")
     p.xlabel('Resource density')
     p.ylabel('Consumer density')
     p.title('Consumer-Resource population dynamics')
     # save the figure as a pdf
-    f2.savefig('../result/LV2_model1.pdf')
+    f2.savefig('../result/LV5_model1.pdf')
 
 def main(argv):
     """main function of the program"""
     # read parameters from command line
     global r, a, z, e, K
-    r = float(sys.argv[1])
-    a = float(sys.argv[2])
-    z = float(sys.argv[3])
-    e = float(sys.argv[4])
+    r = 0.05
+    a = 0.05
+    z = 0.05
+    e = 0.02
     # define K
     K = 10000
-    # define the time vector, integrate from time point 0 to 15, using 1000 sub-divisions of time
-    t = np.linspace(0,15,1000)
     # set the initial conditions for the two populations, convert the two into an array
     R0 = 10
     C0 = 5
     RC0 = np.array([R0, C0])
-    # numerically integrate this system foward from those starting conditons
-    pops, infodict = integrate.odeint(dCR_dt, RC0, t, full_output=True)
+    # define population density array
+    pops = np.array([[R0, C0]])
+    # define starting point of time
+    t = 0
+    # creat 1000 density data of each population
+    while t < 999:
+        RC0 = dCR_dt(RC0)
+        pops = np.append(pops, [[RC0[0], RC0[1]]], axis = 0)
+        t = t + 1
+    # define total t series
+    t = np.array(range(1000))
     # plot population dynamic of consumer and resource and save pictures
     plot1(pops, t)
     plot2(pops)
-    print("At time = 15, resource density is %s and comsumer density is %s." % (pops[-1,0], pops[-1,1]))
-    return 0
 
 
 if __name__ == "__main__": 

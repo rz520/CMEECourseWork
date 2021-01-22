@@ -29,7 +29,7 @@ for (dir, subdir, files) in subprocess.os.walk(home):
             FilesDirsStartingWithC.append(subprocess.os.path.join(dir, name))
 
 # show the directories and files
-FilesDirsStartingWithC
+print(FilesDirsStartingWithC)
   
 #################################
 # Get files and directories in your home/ that start with either an 
@@ -47,7 +47,7 @@ for (dir, subdir, files) in subprocess.os.walk(home):
             FilesDirsStartingWithCc.append(subprocess.os.path.join(dir, name))
 
 # show the directories and files
-FilesDirsStartingWithCc
+print(FilesDirsStartingWithCc)
 
 #################################
 # Get only directories in your home/ that start with either an upper or 
@@ -65,4 +65,4 @@ for (dir, subdir, files) in subprocess.os.walk(home):
             DirsStartingWithCc.append(subprocess.os.path.join(dir, name))
 
 # show the directories
-DirsStartingWithCc
+print(DirsStartingWithCc)

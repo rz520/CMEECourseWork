@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+*
+# Except these 2 files
+!.gitignore
+!rz520_model_fitting.pdf

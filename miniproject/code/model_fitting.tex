@@ -1,0 +1,289 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx, caption, lineno, natbib}
+
+\linespread{1.25}
+
+\newcommand{\reporttitle}{Time Lag Is a Worthwhile Parameter in Mechanistic Modelling of Bacterial Growth}
+
+\newcommand{\reportauthor}{Rui Zhang}
+
+\newcommand{\wordcount}{2448}
+
+\newcommand{\supervisor}{Samraat Pawar}
+
+\date{1/21/2021}
+
+\begin{document}
+  \input{titlepage}
+  
+  \linenumbers
+  
+  \begin{abstract}
+    There are a lot of different models fitting population growth which can be applied to the analysis of 
+    ecosystem dynamics and emergent functional characteristics. This project focuses on cubic polynomial model, 
+    Logistic model and Gompertz model,  trying to find out which model fits real microbes population growth 
+    data the best. After using R to fit models and calculating Akaike information criterion, Schwarz criterion and 
+    the residual sum of squares, Gompertz model shows the best fitting performance among these 3 models. The 
+    parameter time lag is worthy to being added into microbial growth model considering both fit goodness and 
+    model complexity.
+  \end{abstract}
+  
+  \section{Introduction}
+    Population growth equation is necessary in dynamic models to describe the development of the ecosystem 
+    and interactions between the population and environment \citep{GAMITO199883}. 
+    Carrying capacity, population growth rate and metabolic rate of population can all be affected 
+    by environment and then results in changes of population dynamics and ecosystem dynamics \citep{BernhardtJoeyR2018MTat}. 
+    Totally comprehension of population growth model is necessary to estimate extended domains, such 
+    as marine fisheries productivity \citep{SARKER20171}, disease transmission \citep{AldilaDipo2019APDM}, 
+    even the direction of evolution \citep{AndrewP.Hendry2017EDiC}.\\
+    \\
+    There are also many different population growth models, involving phenomenological and mechanistic models. 
+    Cubic polynomial model is the simplest phenomenological mathematical linear model, with 4 parameters, to 
+    describe population growth. For mechanistic models, a classical, somewhat mechanistic model is the 
+    logistic equation with 3 parameters \citep{Peleg1997}. However this model failed to match lag phase of population growth. 
+    To capture the lag phase, more complicated bacterial growth models have been designed, one of which
+    is the modified Gompertz model with 4 parameters \citep{M.H.Zwietering1990MotB}, which is the most 
+    frequently used model in the research to fit population growth. When comparing these models, 
+    a 4 parameters totally phenomenological model, a 3 parameter mechanistic model and a 4 parameters 
+    mechanistic model, Zwietering used t test and F test to compare models' statistical sufficient to describe 
+    population growth and their ease of use \citep{M.H.Zwietering1990MotB}.\\
+    \\
+    Now there are some more scientific model selection criterion to answer the question whether it is 
+    worthwhile to add a new parameter to improve the precise of model fitting. The residual sum of squares, 
+    aka $R^2$, is a naive method to measure fit. But only considering fit is not enough. The Akaike 
+    information criterion (AIC) \citep{BurnhamKennethP2002Msam} calculates the Kullback-Leibler information lost 
+    during approximation full reality with the fitted model, which contains a bias correction factor with 
+    respect to model complexity. Schwarz criterion, also named Bayesian information criterion (BIC), is 
+    another model selection criterion considering both fit and complexity. However, it includes a penalty 
+    term dependent on dataset size and tends to choose simpler models \citep{JOHNSON2004101}. Generally, AIC 
+    is prefered by researchers because of based on Kullback-Leibler information.\\
+    \\
+    Usually, people favor simpler models due to Ockham's razor (aka parsimony principle) if models describe 
+    the same pattern adequately \citep{Peleg2011}. To find out whether time lag is a worthwhile parameter to be 
+    introduced in mechanistic model fitting and whether a more complicated form of equation works better 
+    than totally phenomenological linear model, I fit cubic polynomial, Logistic and Gompertz models to 
+    a large amount of microbes population growth experiments data with R. Bacteria cultivation is easy and 
+    standardized, and it is convenient and fast to get population growth data. Furthermore, bacteria appears 
+    to have a large biodiversity and large habitat diversity which plays an important role in human health, 
+    food safty, fermentation engineering, environment and so on. R is a platform that is mature and convenient 
+    to fit ecological model and analyze data, based on numerous support packages, help documents, simple 
+    installation and convenient high-level syntax \citep{Benjamin2013}. By means of comparing statistical 
+    measure of model fitting, we can discover which model is the most suitable to describe microbes population 
+    growth, especially bacterial growth.
+
+  
+  \section{Materials \& Methods}
+  \subsection{Materials}
+    The dataset contains 4388 records, collected from 10 lab experiments data across the world, containing 
+    the change in biomass or population of microbes over time. The species in these microbes 
+    data include bacteria and mobile phytoplankton, which play an important role in food safty and 
+    environment. Time range of the dataset is also quite large, varying from 1962 to 2018, which could 
+    guarantee the universality of model comparison conclusions. 
+
+  \subsection{Methods}
+    \subsubsection{Computing tools}
+      Data processing, model fitting and results visualization are performed with R due to its excellent 
+      graphing capability and numerous packages for statistical analysis and data handling, including reshape2, 
+      minpack.lm and ggplot2 packages used in this program. Python is an ideal tool to build an automated 
+      workflow to analyze data with the subprocess module, especially useful when the program involves many 
+      different languages. Therefore, I use shell commands in Python script to run R scripts and compile LATEX 
+      to create the report, which guarantees this program is fully reproducible.
+
+
+    \subsubsection{Data management}
+      In this program, two main variables of interest are time and population. Therefore, I create 
+      a new ID with all of the other variables, with which I divide the total dataset into 285 subdatasets. 
+      Then I delete negative time and population biomass, during which I find an unreasonable dataset. This 
+      subdataset contains 29 records but 19 biomass values are negative, so I delete this dataset totally. 
+      Finally there are 284 datasets, containing 4284 records to fit cubic polynomial model, Logistic model 
+      and Gompertz model.
+
+    \subsubsection{Model fitting}
+      There I choose cubic polynomial model, Logistic model and Gompertz model to fit all of 284 datasets. 
+      Because of subsequent AIC and BIC comparison, the formation of biomass or population should be the same. 
+      To guarantee all of these equation have the same response variable, I transform cubic polynomial model and 
+      Logistic model into log scale.\\ 
+      The equation of cubic polynomial model is:
+      \begin{equation}
+        \ log(N_{t}) = log(a + b t + c t^{2} + d t^{3})\
+      \end{equation}
+      The equation of Logistic model is:
+      \begin{equation}
+        \ log(N_{t}) = log(\frac{N_{0} K e^{r t}}{K + N_{0} (e^{rt} - 1)})\
+      \end{equation}
+      The equation of Gompertz model is:
+      \begin{equation}
+        \ log(N_{t}) = N_{0} + (N_{max} - N_{0})e^{-e^{r_{max} e \frac{t_{lag}^{-t}}{(N_{max} - N_{0}) log(10)}+1}}\
+      \end{equation}
+      a, b, c, d are all parameters without biological meaning. 
+      $N_{t}$ is biomass or population value at time t, $N_{0}$ is biomass or population value at initial condition, 
+      $N_{max}$ and K are carrying capacity, r and $r_{max}$ are maximum growth rate and $t_{lag}$ is time lag which 
+      is the duration of delay before the population grow exponentially. \\
+      \\
+      Before model fitting, I transform biomass and population data into log scale and then fit experiments data to models. 
+      For the simple linear phenomenological model, cubic polynomial model, I use R to fit linear model directly. 
+      For Logistic and Gompertz nonlinear models, I need to calculate and choose start value of parameters. 
+      $N_{0}$ start value is the minimum of biomass or population. $N_{max}$ and K are same, whose start value is 
+      the maximum of biomass or population. Start value of r is calculated by linear model, choosing the middle 70 
+      percents of biomass or population value range, drawing a straight line and setting the value of slope as start 
+      value. $t_{lag}$ starting value is set as the time of the largest second order derivative of population growth 
+      point. Furthermore, I sample start values 400 times to find out the best start value combination.\\
+      \\
+      After model fitting, I calculate AIC, BIC and $R^2$ of these model fittings. I also calculate AICc, 
+      which is the second order derivative of AIC and correct small sample size. When size/40 $<$ number 
+      of parameters and size $>$ 5, I calculate AICc as a supplementary criteria of model selection. Here is the 
+      equation of AICc (k is the number of free parameters and n is the sample size):
+      \begin{equation}
+        \ AIC_{c} = AIC + \frac{2k^{2} + 2k}{n - k - 1}\
+      \end{equation}
+
+    \subsubsection{Plotting and analysis}
+      I draw line charts of AIC, BIC and $R^2$ which give a direct discription on 3 models' fitting performance 
+      in bacterial growth data. Moreover, the smaller AIC and BIC are and the bigger $R^2$ is, the better 
+      model performs. Therefore I calculate the best performing model propotion in AIC, BIC and $R^2$ criteria 
+      and visualize them as pie charts. Although only part of datasets meet the condition of using AICc, I analyze 
+      it and summarize it with the other 3 model comparison criteria in a table.
+
+  
+  \section{Results}
+    Finally, 282 of 284 datasets are fitted successfully in all of cubic polynomial model, Logistic model 
+    and Gompertz model. Also, all of the model fitting lines are drawn in the point graph of every dataset. 
+    Here is an example of the model fitting situation to the last dataset (Figure 1). This dataset contains 
+    89 records, which is a relative big sample size among 284 datasets, and the population growth curve is also 
+    reasonable. It is obvious that every model shows a good fit to the growth of microbes population, but 
+    only Gompertz model catches the lag phase of microbe growth. Therefore, it seems like Gompertz model is 
+    the best model to fit this dataset. However, there are some more scientific and reasonable model selection 
+    criterias considering fit and complexity and giving a specific number to show model fitting performance, 
+    such as AIC, AICc, BIC and $R^2$. Table 1 demonstrates exact number of datasets that every model shows 
+    the best performance in AIC, AICc, BIC and $R^2$.
+  
+    \begin{figure}
+      \centering
+      \includegraphics[scale=0.5]{../result/modelfitting/284.pdf}
+      \caption{An example of 3 models fitting to a dataset}
+    \end{figure}
+
+    \begin{table}[htbp]
+      \centering
+      \caption{The best fitting model under 4 criteria}
+      \begin{tabular}{ccccc}
+        \hline
+        Model & AIC & AICc & BIC & $R^2$ \\ \hline
+        Gompertz & 172 & 127 & 169 & 192 \\ \hline
+        Logistic & 54 & 112 & 59& 29 \\ \hline
+        Cubic & 56 & 25 & 54 & 61 \\ \hline
+      \end{tabular}
+    \end{table}
+  
+  \subsection{$R^2$}
+    $R^2$ is the residual sum of squares for a model, which is the simplest criterion to show the quality of 
+    fit. The more $R^2$ close to 1, the better model fits experiments data. As shown in Figure 2, cubic model 
+    shows general large $R^2$, while both of Logistic model and Gompertz model appears to have some quite low 
+    $R^2$. Calculated from Table 1, there are $68.1\%$ datasets fitted best by Gompertz model, $21.6\%$ 
+    datasets fitted best by cubic polynomial model and $10.3\%$ datasets fitted best by Logistic model. However, 
+    maximizing $R^2$ doesn't consider model complexity, neglecting the parsimony principle.
+    \begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{../result/modelfitting/RSq.pdf}
+      \caption{Model fitting performance $R^2$}
+    \end{figure}
+
+    
+  \subsection{AIC \& AICc}
+    The Akaike information criterion (AIC) is a model selection criterion that considers both fit and complexity 
+    among multiple models. When the sample size is small, AICc should be used to correct the bias. Gompertz model's 
+    AIC shows an overall relative low value compared with the other 2 models given Figure 3 line chart. In further 
+    best fitting model analysis, Gompertz model, cubic polynomial model and Logistic model fitting real microbes population 
+    growth data best accounts for $61\%$, $19.9\%$ and $19.1\%$ of 284 datasets respectively. However, when 
+    calculating AICc, there are 18 datasets' size less than or equal to 5, which can not be calculated AICc value. 
+    In 264 datasets, best fitting model propotion changes a lot, Gompertz model decreasing to $48.1\%$, cubic 
+    polynomial model decreasing to $9.5\%$ and Logistic model increasing to $42.4\%$. But Gompertz model still 
+    accounts for the largest propotion of best fitting and shows general lower AICc value in Figure 4.
+    \begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{../result/modelfitting/AIC.pdf}
+      \caption{Model fitting performance AIC}
+    \end{figure}
+
+    \begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{../result/modelfitting/AICc.pdf}
+      \caption{Model fitting performance AICc}
+    \end{figure}
+
+  \subsection{BIC}
+    BIC is a model selection criterion taking fit ,complexity and sample size into account. It prefers simpler 
+    models, especially sample size increasing. Three models' fitting performance in Bayesian information 
+    criterion (Figure 5) is similar with what AIC interprets, Gompertz model showing a globle lower BIC. The best 
+    performing model propotion in BIC is $59.9\%$ for Gompertz model, $19.1\%$ for cubic polynomial model 
+    and $20.9\%$ for Logistic model.
+    \begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{../result/modelfitting/BIC.pdf}
+      \caption{Model fitting performance BIC}
+    \end{figure}
+
+
+  \section{Discussion}
+  Population growth is a complex system affected by massive factors. What is a good method to deal 
+  with such a complicated system is setting up mathematical models. 3 criteria of a mathematical 
+  model is generality, realism and precision \citep{RICHARDLEVINS1966TSOM}. When establishing 
+  models, we should balance these 3 criteria according to our research objective. Strictly 
+  speaking, three models in this program are all empirical models instead of totally mechanistic 
+  models. The purpose of these models is to describe and quantify experimentally observed 
+  patterns, but not explain why this particular pattern emerges \citep{Peleg2011}. Therefore, 
+  the mathematical convenience and good fit performance matter. Here I use AIC, BIC and $R^2$ 
+  to show statistical measure of model fitting, and try to answer whether time lag is worthy 
+  of introduced in microbes population growth model.\\
+  \\
+  In the data management, I deleted a dataset with too high propotion of negative biomass. Therefore, the other 
+  284 datasets are fitted by cubic polynomial model, Logistic model and Gompertz model after deleted negative 
+  biomass and time. Ultimately, 282 datasets are successfully fitted in all of these 3 models, and the 
+  fitting lines seem rational and well-fitted to describe microbes population growth. $R^2$ is used to show 
+  the goodness of fit, while AIC, AICc and BIC are used as model selection criteria, considering both fit 
+  and model complexity. Cubic polynomial model seems to fit microbes experiments data well with general high 
+  $R^2$ value while Gompertz model shows the highest $R^2$ value in 192 datasets. For model selection, 
+  Gompertz model shows the lowest AIC and BIC value in majority of 282 datasets, which means although BIC favor 
+  simpler model and have correct sample size bias, Gompertz model still performs better than the other 2 models. 
+  When considering AICc, it is the same case. In conclusion, Gompertz model is the best of these 3 models to 
+  describe microbes population growth.\\
+  \\
+  The success of Gompertz model demonstrates at least 2 enlightenments. Firstly, mechanistic model is better 
+  than totally phenomenological linear model when the number of parameters are the same. 
+  Time lag is a worthwhile parameter to be added into microbes population growth data which can improve 
+  model fitting performance significantly. The biological reason of this phenomenon may be the transition 
+  behavior of microbes at the end of lag phase of population growth process \citep{VerhulstA.J2011Aotl}. 
+  Although the value of parameter time lag might not be equal to the biological meaning of lag phase duration.\\
+  \\
+  Besides, there are many other population growth model not involved in this program. Such as Baranyi 
+  model \citep{BARANYIJ1993Ande}, three-phase model \citep{BuchananR.L1997Wisg}, 
+  totally and truly mechanistic model on cells level \citep{Peleg2011} and so on. Baranyi model is also 
+  a widely used model to describe population growth. However, instead of adding time lag parameter, it added 
+  the initial physiological state of cells $h_{0}$ compared with Gompertz model. Furthermore, this model used 
+  an equation $h_{0} = t_{lag} r_{max}$, appearing in the solution of rate equation, to calculate time lag. 
+  The ralative high correlation between $r_{max}$ and $h_{0}$ results in difficulty of estimating the parameters 
+  value of Baranyi model \citep{GrijspeerdtK1999Etpo}. But a more district experiments design can guarantee 
+  the precise of parameter estimate. Also the benefits of introducing $h_{0}$ in model should 
+  be calculated in the future.\\
+  \\
+  Whitting specified models into 3 levels \citep{Whiting}. All models mentioned above are all level one model 
+  that only describe changes of microbial numbers versus time. Level 2 models demonstrates effect of environment 
+  on parameters in level 1. What level 3 models do is combining level 1 and level 2 models and calculating 
+  microbial behavior under changed environment condition. We should choose suitable models according to our 
+  objective. Such as cubic polynomial model can catch death phase, that may be the reason why in some datasets 
+  cubic model shows the best fit. If we need to predict different temperature population growth (level 3 models), 
+  Gompertz model has some shortcomes and Baranyi model is the better choice of level 1 model \citep{Peleg2011,SILVA2018}. 
+  When using models, we ought to keep in mind that an appropriate model to the question is more important 
+  than model fitting performance. The validation of a model is that it generates good testable hypotheses 
+  relevent to crucial problems.\\
+  \\
+  In summary, Gompertz model fits microbes population growth expirical datasets best because of catching lag 
+  phase of microbes growth which is consistent with microbes transition behavior observed in experiments. 
+  In addition, time lag is worthy to be added into fitting model after balancing fit goodness and model complexity.
+
+  
+  \bibliographystyle{agsm}
+
+  \bibliography{model_fitting}
+
+\end{document}

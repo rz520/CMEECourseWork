@@ -9,6 +9,7 @@ import scipy.integrate as integrate
 
 # define a function that returns the growth rate of consumer and resource population at any given time step
 def dCR_dt(pops, t=0):
+    """a function returns the growth rate of consumer and resource population at any given time step"""
     R = pops[0]
     C = pops[1]
     dRdt = r * R - a * R * C
