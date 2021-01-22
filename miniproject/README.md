@@ -18,7 +18,7 @@ There are 4 directories including code, data, result and sandbox.
 - Sandbox contains test files to practice command usage.
 
 ## Languages
-Bash, LaTeX, Python, R
+Shell, LaTeX, Python, R
 
 ## Dependencies
 Python modules: subprocess, sys

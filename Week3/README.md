@@ -10,7 +10,7 @@ There are 4 directories including code, data, result and sandbox.
 - Sandbox contains test files to practice command usage.
 
 ## Languages
-R, Python, shell
+R, Python, Shell
 
 ## Dependencies
 R packages: maps, ggplot2, tidyvere, dplyr, broom
